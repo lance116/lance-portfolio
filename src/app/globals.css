@@ -1,0 +1,152 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+@theme {
+--color-background: #FFEBD8;
+--color-foreground: #3a3a3c;
+--color-card: #FFF5EE;
+--color-card-foreground: #2f3033;
+--color-popover: #FFF5EE;
+--color-popover-foreground: #2f3033;
+--color-primary: #8B0000;
+--color-primary-foreground: #ffffff;
+--color-secondary: #FFE8D6;
+--color-secondary-foreground: #2f3033;
+--color-muted: #FFEEE8;
+--color-muted-foreground: #8c8f93;
+--color-accent: #FFEBE0;
+--color-accent-foreground: #2f3033;
+--color-destructive: #8B0000;
+--color-destructive-foreground: #ffffff;
+--color-border: #F5D5C0;
+--color-input: #F5D5C0;
+--color-ring: #8B0000;
+--color-chart-1: #8B0000;
+--color-chart-2: #FFE8D6;
+--color-chart-3: #2b2c2f;
+--color-chart-4: #8c8f93;
+--color-chart-5: #FFCAB0;
+--color-sidebar: #FFE8D6;
+--color-sidebar-foreground: #5b5f66;
+--color-sidebar-primary: #8B0000;
+--color-sidebar-primary-foreground: #ffffff;
+--color-sidebar-accent: #FFEBE0;
+--color-sidebar-accent-foreground: #2f3135;
+--color-sidebar-border: #F5D5C0;
+--color-sidebar-ring: #8B0000;
+--radius-lg: 1rem;
+--radius-md: calc(1rem - 2px);
+--radius-sm: calc(1rem - 4px);
+--animate-accordion-down: accordion-down 0.2s ease-out;
+@keyframes accordion-down {
+from { height: 0; }
+to { height: var(--radix-accordion-content-height); }
+}
+--animate-accordion-up: accordion-up 0.2s ease-out;
+@keyframes accordion-up {
+from { height: var(--radix-accordion-content-height); }
+to { height: 0; }
+}
+--color-surface-dark: #1e1f22;
+--color-surface-dim: #26272b;
+--font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+--font-heading: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+/*
+The default border color has changed to currentColor in Tailwind CSS v4,
+so we've added these compatibility styles to make sure everything still
+looks the same as it did with Tailwind CSS v3.
+If we ever want to remove these styles, we need to add an explicit border
+color utility to any element that depends on these defaults.
+*/
+@layer base {
+*,
+::after,
+::before,
+::backdrop,
+::file-selector-button {
+border-color: var(--color-border);
+}
+}
+@layer utilities {
+body {
+font-family: var(--font-sans);
+}
+}
+@layer base {
+:root {
+--background: var(--color-background);
+--foreground: var(--color-foreground);
+--card: var(--color-card);
+--card-foreground: var(--color-card-foreground);
+--popover: var(--color-popover);
+--popover-foreground: var(--color-popover-foreground);
+--primary: var(--color-primary);
+--primary-foreground: var(--color-primary-foreground);
+--secondary: var(--color-secondary);
+--secondary-foreground: var(--color-secondary-foreground);
+--muted: var(--color-muted);
+--muted-foreground: var(--color-muted-foreground);
+--accent: var(--color-accent);
+--accent-foreground: var(--color-accent-foreground);
+--destructive: var(--color-destructive);
+--destructive-foreground: var(--color-destructive-foreground);
+--border: var(--color-border);
+--input: var(--color-input);
+--ring: var(--color-ring);
+--chart-1: var(--color-chart-1);
+--chart-2: var(--color-chart-2);
+--chart-3: var(--color-chart-3);
+--chart-4: var(--color-chart-4);
+--chart-5: var(--color-chart-5);
+--radius: var(--radius-lg);
+--sidebar-background: var(--color-sidebar);
+--sidebar-foreground: var(--color-sidebar-foreground);
+--sidebar-primary: var(--color-sidebar-primary);
+--sidebar-primary-foreground: var(--color-sidebar-primary-foreground);
+--sidebar-accent: var(--color-sidebar-accent);
+--sidebar-accent-foreground: var(--color-sidebar-accent-foreground);
+--sidebar-border: var(--color-sidebar-border);
+--sidebar-ring: var(--color-sidebar-ring);
+--surface-dark: var(--color-surface-dark);
+--surface-dim: var(--color-surface-dim);
+}
+}
+@layer base {
+body {
+@apply bg-background text-foreground;
+}
+.container {
+margin-inline: auto;
+padding-inline: 2rem;
+}
+}
+@layer base {
+html {
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+text-rendering: optimizeLegibility;
+}
+body {
+background-color: var(--color-background);
+color: var(--color-foreground);
+}
+h1, h2, h3, h4 {
+font-family: var(--font-heading);
+color: var(--color-foreground);
+}
+h1 { font-weight: 700; letter-spacing: -0.02em; }
+h2 { font-weight: 700; letter-spacing: -0.015em; }
+h3 { font-weight: 600; letter-spacing: -0.01em; }
+p { color: var(--color-foreground); }
+small, .text-muted-foreground { color: var(--color-muted-foreground); }
+a { color: var(--color-primary); text-decoration: none; }
+.font-sans { font-family: var(--font-sans); }
+.font-heading { font-family: var(--font-heading); }
+}
+
+/* Hide Next.js error overlay portal */
+nextjs-portal {
+  display: none !important;
+}
