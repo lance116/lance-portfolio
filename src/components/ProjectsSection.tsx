@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Grid3x2, BadgeX, Component, Frame, ChartColumnBig } from 'lucide-react';
+import { Grid3x2, BadgeX, Component, Frame, ChartColumnBig, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Project {
@@ -29,8 +29,8 @@ interface Project {
 const mockProjects: Project[] = [
   {
     id: '1',
-    title: 'AI-Powered Analytics Dashboard',
-    problem: 'Enterprise clients struggled with complex data visualization and real-time analytics',
+    title: 'AI-Powered Period Tracker',
+    problem: 'I created a custom period tracker app for my girlfriend which features an AI chat buddy.',
     keyMetric: 'Query Performance',
     metricValue: '75% faster',
     stack: ['React', 'Next.js', 'TypeScript', 'Python', 'PostgreSQL'],
@@ -74,7 +74,7 @@ const mockProjects: Project[] = [
     keyMetric: 'Page Load Speed',
     metricValue: '60% faster',
     stack: ['Next.js', 'Vercel', 'Shopify', 'GraphQL', 'Tailwind'],
-    category: 'Frontend',
+    category: 'Full Stack',
     thumbnail: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop',
     demoUrl: '#demo',
     codeUrl: '#code',
@@ -89,7 +89,7 @@ const mockProjects: Project[] = [
   }
 ];
 
-const categories = ['All', 'Full Stack', 'AI/ML', 'Frontend', 'Backend'];
+const categories = ['All', 'Full Stack', 'AI/ML'];
 
 export default function ProjectsSection() {
   const [projects] = useState<Project[]>(mockProjects);
@@ -297,8 +297,8 @@ export default function ProjectsSection() {
                           onClick={() => handleViewCase(project)}
                           className="flex-1"
                         >
-                          <Frame className="w-4 h-4 mr-1" />
-                          View Case
+                          <Github className="w-4 h-4 mr-1" />
+                          View Repo
                         </Button>
                         <Button
                           variant="outline"
@@ -434,8 +434,8 @@ export default function ProjectsSection() {
                     className="flex-1"
                   >
                     <a href={selectedProject.codeUrl} target="_blank" rel="noopener noreferrer">
-                      <Frame className="w-4 h-4 mr-2" />
-                      View Code
+                      <Github className="w-4 h-4 mr-2" />
+                      View Repo
                     </a>
                   </Button>
                 </div>
