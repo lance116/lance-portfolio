@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'motion/react';
-import { Milestone, ChevronDown, ChevronUp, Building2 } from 'lucide-react';
+import { Milestone, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -33,13 +33,9 @@ const mockExperiences: ExperienceEntry[] = [
     endDate: 'Present',
     logo: '/stealth.png',
     impacts: [
-      'Led development of microservices architecture, reducing response time by 40%',
-      'Mentored 3 junior developers and established code review standards'
-    ],
-    details: [
-      'Implemented CI/CD pipelines using Docker and Kubernetes',
-      'Collaborated with product team to define technical requirements',
-      'Optimized database queries resulting in 25% performance improvement'
+      'Led the end-to-end development of the platform\'s frontend for an AI-powered legal document verification tool, using React, TypeScript, and Next.js to deliver a responsive, scalable interface.',
+      'Designed and implemented a modular component library of 40+ reusable UI elements, reducing projected development time for new features by 60%.',
+      'Built dynamic form validation workflows with Gemini API integration to provide instant AI feedback on document completion accuracy directly within the UI.'
     ],
     type: 'full-time'
   },
@@ -49,7 +45,7 @@ const mockExperiences: ExperienceEntry[] = [
     company: 'RCL Consulting',
     startDate: '2025-01',
     endDate: '2025-04',
-    logo: '/ConsultingPFP.webp',
+    logo: '/consultingimage.png',
     impacts: [
       'Built responsive web applications serving 10k+ daily users',
       'Improved accessibility compliance to WCAG 2.1 AA standards'
@@ -64,24 +60,19 @@ const mockExperiences: ExperienceEntry[] = [
   {
     id: '3',
     title: 'Research Fellow',
-    company: 'StartupXYZ',
-    startDate: '2021-05',
-    endDate: '2021-08',
+    company: 'Toronto Metropolitan University',
+    startDate: '2024-06',
+    endDate: '2024-07',
+    logo: '/TMU.jpg',
     impacts: [
-      'Developed MVP features used by 500+ beta users',
-      'Automated testing processes, increasing coverage by 60%'
-    ],
-    details: [
-      'Built user authentication and authorization system',
-      'Created admin dashboard for content management',
-      'Participated in agile development ceremonies'
+      'Led a 9-member interdisciplinary team in designing a turbine-powered device for integration with central AC units, aimed at generating sustainable energy from existing airflow.',
+      'Collaborated with professional engineers and professors from Yale, UofT, and TMU to refine system architecture, and advance to the final round of industry evaluation.'
     ],
     type: 'internship'
   }
 ];
 
 function TimelineItem({ entry, index }: TimelineItemProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { margin: "-100px 0px" });
 
@@ -194,8 +185,8 @@ function TimelineItem({ entry, index }: TimelineItemProps) {
         </CardHeader>
 
         <CardContent className="pt-0">
-          {/* Impact bullets */}
-          <ul className="space-y-2 mb-4">
+          {/* All bullet points */}
+          <ul className="space-y-2">
             {entry.impacts.map((impact, idx) => (
               <li key={idx} className="flex items-start gap-3">
                 <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
@@ -204,56 +195,15 @@ function TimelineItem({ entry, index }: TimelineItemProps) {
                 </span>
               </li>
             ))}
+            {entry.details && entry.details.map((detail, idx) => (
+              <li key={idx} className="flex items-start gap-3">
+                <div className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0 mt-2" />
+                <span className="text-sm text-foreground leading-relaxed">
+                  {detail}
+                </span>
+              </li>
+            ))}
           </ul>
-
-          {/* Expandable details */}
-          {entry.details && entry.details.length > 0 && (
-            <>
-              <motion.div
-                initial={false}
-                animate={{ 
-                  height: isExpanded ? 'auto' : 0,
-                  opacity: isExpanded ? 1 : 0
-                }}
-                transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-                className="overflow-hidden"
-              >
-                <div className="pt-2 border-t border-border">
-                  <ul className="space-y-2">
-                    {entry.details.map((detail, idx) => (
-                      <li key={idx} className="flex items-start gap-3">
-                        <div className="w-1.5 h-1.5 rounded-full bg-muted-foreground/60 flex-shrink-0 mt-2" />
-                        <span className="text-sm text-muted-foreground leading-relaxed">
-                          {detail}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsExpanded(!isExpanded)}
-                className="mt-3 h-8 text-xs font-medium text-muted-foreground hover:text-foreground"
-                aria-expanded={isExpanded}
-                aria-controls={`details-${entry.id}`}
-              >
-                {isExpanded ? (
-                  <>
-                    <ChevronUp className="w-3 h-3 mr-1" />
-                    Show less
-                  </>
-                ) : (
-                  <>
-                    <ChevronDown className="w-3 h-3 mr-1" />
-                    More details
-                  </>
-                )}
-              </Button>
-            </>
-          )}
         </CardContent>
       </Card>
     </motion.div>
