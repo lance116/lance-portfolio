@@ -36,9 +36,6 @@ export default function ProfileSection() {
   const animationStarted = useRef(false);
 
   useEffect(() => {
-    // Mobile-specific intersection observer configuration
-    const isMobile = window.innerWidth < 768; // md breakpoint
-    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !animationStarted.current) {
@@ -46,10 +43,7 @@ export default function ProfileSection() {
           animationStarted.current = true;
         }
       },
-      { 
-        threshold: isMobile ? 0.1 : 0.3, // Lower threshold on mobile
-        rootMargin: isMobile ? '-50px 0px' : '0px' // Add negative margin on mobile to trigger earlier
-      }
+      { threshold: 0.3 }
     );
 
     if (sectionRef.current) {
