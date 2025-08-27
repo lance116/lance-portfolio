@@ -32,29 +32,10 @@ const skills: Skill[] = [
 export default function ProfileSection() {
   const [animatedSkills, setAnimatedSkills] = useState<number[]>(new Array(skills.length).fill(0));
   const [percentageCounters, setPercentageCounters] = useState<number[]>(new Array(skills.length).fill(0));
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
   const skillRefs = useRef<(HTMLDivElement | null)[]>(new Array(skills.length).fill(null));
-  const animationStarted = useRef(false);
   const individualSkillAnimations = useRef<Set<number>>(new Set());
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !animationStarted.current) {
-          setIsVisible(true);
-          animationStarted.current = true;
-        }
-      },
-      { threshold: 0.3 }
-    );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   // Individual skill intersection observers
   useEffect(() => {
@@ -68,14 +49,14 @@ export default function ProfileSection() {
               // Trigger animation for this specific skill
               individualSkillAnimations.current.add(index);
               
-              // Animate the skill bar
+              // Animate both progress bar and percentage counter simultaneously
               setAnimatedSkills(prev => {
                 const newValues = [...prev];
                 newValues[index] = skills[index].proficiency;
                 return newValues;
               });
               
-              // Animate the percentage counter
+              // Start percentage counter animation immediately
               const skill = skills[index];
               const counterDuration = 800;
               const startTime = performance.now();
@@ -116,54 +97,12 @@ export default function ProfileSection() {
     };
   }, []);
 
-  useEffect(() => {
-    if (isVisible) {
-      // Reset to 0 first
-      setAnimatedSkills(new Array(skills.length).fill(0));
-      setPercentageCounters(new Array(skills.length).fill(0));
-      
-      // Use a simple, smooth approach with CSS transitions
-      skills.forEach((skill, index) => {
-        const delay = index * 150; // Reduced delay for 25% faster loading
-        
-        setTimeout(() => {
-          setAnimatedSkills(prev => {
-            const newValues = [...prev];
-            newValues[index] = skill.proficiency;
-            return newValues;
-          });
-          
-          // Animate percentage counter from 0 to final value
-          const counterDuration = 800; // Fast counter animation
-          const startTime = performance.now();
-          
-          const animateCounter = (currentTime: number) => {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / counterDuration, 1);
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            const currentValue = Math.round(skill.proficiency * easeOutQuart);
-            
-            setPercentageCounters(prev => {
-              const newValues = [...prev];
-              newValues[index] = currentValue;
-              return newValues;
-            });
-            
-            if (progress < 1) {
-              requestAnimationFrame(animateCounter);
-            }
-          };
-          
-          requestAnimationFrame(animateCounter);
-        }, delay);
-      });
-    }
-  }, [isVisible]);
+
 
 
 
   return (
-    <section ref={sectionRef} className="w-full py-20 px-4">
+    <section className="w-full py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column */}
