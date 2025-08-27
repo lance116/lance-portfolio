@@ -54,7 +54,7 @@ const mockProjects: Project[] = [
     metricValue: '',
     stack: ['Python', 'TensorFlow', 'NumPy'],
     category: 'AI/ML',
-    thumbnail: '/chessSS.png',
+    thumbnail: '/chessscreens.png',
     demoUrl: '#demo',
     codeUrl: 'https://github.com/lance116/Chess-Neural-Network',
     fullDescription: 'Created an end-to-end ML operations platform that automates model deployment, monitoring, and scaling across cloud infrastructure.',

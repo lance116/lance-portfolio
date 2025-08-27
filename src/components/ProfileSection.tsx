@@ -187,24 +187,23 @@ export default function ProfileSection() {
                   
                   <div className="flex-1 space-y-4">
                     <p className="text-foreground leading-relaxed">
-                      I'm passionate about creating elegant solutions to complex problems through clean, 
-                      efficient code and thoughtful user experiences.
+                    I’ve built projects ranging from a chess neural network to an AI-powered period tracker; focusing on turning complex ideas into usable, polished products.
                     </p>
                     
                     <ul className="space-y-2 text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <span className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Systematic approach to problem-solving with focus on scalability</span>
+                        <span>I like designing systems that are simple to use but robust under the hood.</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                        <span>Computer Science student at University of Waterloo</span>
+                        <span>Computer Science student at the University of Waterloo</span>
                       </li>
                     </ul>
                     
                     <p className="text-sm text-muted-foreground">
-                      Currently exploring the intersection of AI/ML and web development, 
-                      building projects that make technology more accessible and impactful.
+                    Right now I’m building projects at the overlap of AI and web development. 
+                    Aiming to make advanced tools more accessible, practical, and impactful in everyday workflows.
                     </p>
                   </div>
                 </div>
@@ -218,7 +217,7 @@ export default function ProfileSection() {
                     </div>
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4" />
-                      <span>Available for opportunities</span>
+                      <span>Available for immediate opportunities</span>
                     </div>
                   </div>
                 </div>
