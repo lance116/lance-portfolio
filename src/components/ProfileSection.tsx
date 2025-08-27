@@ -175,7 +175,7 @@ export default function ProfileSection() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="flex flex-col sm:flex-row gap-6">
-                  <div className="flex-shrink-0 ml-4">
+                  <div className="flex-shrink-0 flex items-center">
                     <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-primary/20 to-primary/40 p-1">
                       <img
                         src="/pfp4.png"
