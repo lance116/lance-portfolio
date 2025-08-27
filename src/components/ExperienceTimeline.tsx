@@ -48,7 +48,7 @@ const mockExperiences: ExperienceEntry[] = [
     logo: '/consultingimage.png',
     impacts: [],
     details: [
-      'Built and launched the consulting firm\'s public website with Next.js, TypeScript, and Tailwind, optimizing SEO and accessibility to boost client engagement and drive 1,000+ new monthly visitors',
+      'Built and launched the consulting firm\'s public website with Next.js, TypeScript, and Tailwind, optimizing SEO and accessibility to boost client engagement and drove 1,000+ new monthly visitors',
       'Automated deployment pipelines with Vercel CI/CD, cutting release cycles to hours while maintaining 99.9% uptime',
       'Integrated Google Analytics and CRM workflows, giving consultants real-time insights into lead sources and boosting sales-qualified leads by 30%'
     ],

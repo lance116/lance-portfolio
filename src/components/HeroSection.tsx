@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, useAnimation } from "motion/react";
 import { Button } from "@/components/ui/button";
-import { Code, Github, Component } from "lucide-react";
+import { Code, Github, Component, Database, Layers, Globe } from "lucide-react";
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -121,16 +121,16 @@ export default function HeroSection() {
               {/* Tech Stack Badges */}
               <div className="flex flex-wrap gap-2">
                 <div className="flex items-center gap-1 bg-secondary px-3 py-1.5 rounded-full text-sm font-medium text-secondary-foreground border border-border">
-                  <Component className="w-4 h-4 text-primary" />
+                  <Layers className="w-4 h-4 text-primary" />
                   React
                 </div>
                 <div className="flex items-center gap-1 bg-secondary px-3 py-1.5 rounded-full text-sm font-medium text-secondary-foreground border border-border">
-                  <Code className="w-4 h-4 text-primary" />
+                  <Globe className="w-4 h-4 text-primary" />
                   Next.js
                 </div>
                 <div className="flex items-center gap-1 bg-secondary px-3 py-1.5 rounded-full text-sm font-medium text-secondary-foreground border border-border">
-                  <Github className="w-4 h-4 text-primary" />
-                  PyTorch
+                  <Database className="w-4 h-4 text-primary" />
+                  PostgreSQL
                 </div>
               </div>
             </div>

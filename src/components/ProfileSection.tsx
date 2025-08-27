@@ -21,9 +21,10 @@ const skills: Skill[] = [
   { name: "Next.js", proficiency: 87 },
   { name: "Tailwind CSS", proficiency: 90 },
   { name: "HTML", proficiency: 95 },
-  { name: "CSS", proficiency: 88 },
-  { name: "PyTorch", proficiency: 80 },
-  { name: "TensorFlow", proficiency: 75 },
+      { name: "CSS", proficiency: 88 },
+    { name: "PostgreSQL", proficiency: 85 },
+    { name: "PyTorch", proficiency: 75 },
+  { name: "TensorFlow", proficiency: 80 },
   { name: "NumPy", proficiency: 85 },
   { name: "Matplotlib", proficiency: 82 }
 ];
