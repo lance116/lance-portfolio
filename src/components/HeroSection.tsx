@@ -44,7 +44,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="min-h-screen bg-background flex items-center justify-center px-4 py-12 lg:py-20">
+    <section className="min-h-screen bg-background flex items-center justify-center px-4 pt-20 pb-12 lg:py-20">
       <div className="container max-w-7xl mx-auto">
         <motion.div
           className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
