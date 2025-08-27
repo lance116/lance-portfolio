@@ -33,8 +33,11 @@ export default function ProfileSection() {
   const [animatedSkills, setAnimatedSkills] = useState<number[]>(new Array(skills.length).fill(0));
   const [percentageCounters, setPercentageCounters] = useState<number[]>(new Array(skills.length).fill(0));
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobileSkillsVisible, setIsMobileSkillsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const skillsCardRef = useRef<HTMLDivElement>(null);
   const animationStarted = useRef(false);
+  const mobileAnimationStarted = useRef(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -52,6 +55,25 @@ export default function ProfileSection() {
     }
 
     return () => observer.disconnect();
+  }, []);
+
+  // Mobile-specific observer for skills section
+  useEffect(() => {
+    const mobileObserver = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !mobileAnimationStarted.current) {
+          setIsMobileSkillsVisible(true);
+          mobileAnimationStarted.current = true;
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (skillsCardRef.current) {
+      mobileObserver.observe(skillsCardRef.current);
+    }
+
+    return () => mobileObserver.disconnect();
   }, []);
 
   useEffect(() => {
@@ -97,6 +119,54 @@ export default function ProfileSection() {
       });
     }
   }, [isVisible]);
+
+  // Mobile-specific animation trigger
+  useEffect(() => {
+    if (isMobileSkillsVisible) {
+      // Only trigger if desktop animation hasn't already run
+      if (!isVisible) {
+        // Reset to 0 first
+        setAnimatedSkills(new Array(skills.length).fill(0));
+        setPercentageCounters(new Array(skills.length).fill(0));
+        
+        // Use a simple, smooth approach with CSS transitions
+        skills.forEach((skill, index) => {
+          const delay = index * 150; // Reduced delay for 25% faster loading
+          
+          setTimeout(() => {
+            setAnimatedSkills(prev => {
+              const newValues = [...prev];
+              newValues[index] = skill.proficiency;
+              return newValues;
+            });
+            
+            // Animate percentage counter from 0 to final value
+            const counterDuration = 800; // Fast counter animation
+            const startTime = performance.now();
+            
+            const animateCounter = (currentTime: number) => {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / counterDuration, 1);
+              const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+              const currentValue = Math.round(skill.proficiency * easeOutQuart);
+              
+              setPercentageCounters(prev => {
+                const newValues = [...prev];
+                newValues[index] = currentValue;
+                return newValues;
+              });
+              
+              if (progress < 1) {
+                requestAnimationFrame(animateCounter);
+              }
+            };
+            
+            requestAnimationFrame(animateCounter);
+          }, delay);
+        });
+      }
+    }
+  }, [isMobileSkillsVisible, isVisible]);
 
   return (
     <section ref={sectionRef} className="w-full py-20 px-4">
@@ -178,7 +248,7 @@ export default function ProfileSection() {
           </div>
 
           {/* Skills Card */}
-          <Card className="bg-card shadow-lg border-0">
+          <Card ref={skillsCardRef} className="bg-card shadow-lg border-0">
             <CardHeader>
               <CardTitle className="text-2xl font-heading text-foreground">Skills</CardTitle>
             </CardHeader>
