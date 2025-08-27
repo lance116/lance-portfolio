@@ -125,7 +125,7 @@ export default function ContactCTA({ className }: ContactCTAProps) {
   }
 
   return (
-    <section className={`w-full py-16 px-6 ${className}`}>
+    <section className={`w-full pt-6 pb-16 px-6 ${className}`}>
       <div className="max-w-4xl mx-auto">
         <div className="bg-card rounded-2xl shadow-lg border border-border overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-0">

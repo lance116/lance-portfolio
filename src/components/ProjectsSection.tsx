@@ -30,12 +30,12 @@ const mockProjects: Project[] = [
   {
     id: '1',
     title: 'AI-Powered Period Tracker',
-    problem: 'I created a custom period tracker app for my girlfriend which features an AI chat buddy.',
+    problem: 'I created a custom period tracker app for my girlfriend which features an AI chat buddy',
     keyMetric: 'Query Performance',
     metricValue: '75% faster',
     stack: ['React', 'Next.js', 'TypeScript', 'Python', 'PostgreSQL'],
     category: 'Full Stack',
-    thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
+    thumbnail: '/aiperiodtracker.png',
     demoUrl: '#demo',
     codeUrl: '#code',
     fullDescription: 'Built a comprehensive analytics platform that processes millions of data points in real-time, providing actionable insights through intuitive visualizations.',
@@ -319,9 +319,9 @@ export default function ProjectsSection() {
         </AnimatePresence>
 
         {/* Call to Action */}
-        <div className="text-center mt-16 p-8 bg-muted/50 rounded-lg border border-border">
+        <div className="text-center mt-8 p-8 bg-muted/50 rounded-lg border border-border">
           <h3 className="text-xl font-semibold text-foreground mb-2">
-            Interested in Similar Results?
+            Interested in collaborating?
           </h3>
           <p className="text-muted-foreground mb-4">
             Let's discuss how I can help solve your technical challenges and drive measurable outcomes.
@@ -443,7 +443,7 @@ export default function ProjectsSection() {
                 {/* CTA for Recruiters */}
                 <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 text-center">
                   <h5 className="text-lg font-semibold text-foreground mb-2">
-                    Interested in Similar Results?
+                    Interested in collaborating?
                   </h5>
                   <p className="text-muted-foreground mb-4">
                     I'd love to discuss how I can bring this level of impact to your team and projects.

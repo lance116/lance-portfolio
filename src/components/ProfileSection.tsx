@@ -86,65 +86,77 @@ export default function ProfileSection() {
     <section ref={sectionRef} className="w-full py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* About Me Card */}
-          <Card className="bg-card shadow-lg border-0 h-fit">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading text-foreground">About Me</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="flex-shrink-0 ml-4">
-                  <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-primary/20 to-primary/40 p-1">
-                    <img
-                      src="/pfp4.png"
-                      alt="Lance Yan"
-                      className="w-full h-full rounded-full object-cover"
-                    />
+          {/* Left Column */}
+          <div className="space-y-0">
+            {/* About Me Card */}
+            <Card className="bg-card shadow-lg border-0 h-fit">
+              <CardHeader>
+                <CardTitle className="text-2xl font-heading text-foreground">About Me</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="flex-shrink-0 ml-4">
+                    <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gradient-to-br from-primary/20 to-primary/40 p-1">
+                      <img
+                        src="/pfp4.png"
+                        alt="Lance Yan"
+                        className="w-full h-full rounded-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="flex-1 space-y-4">
+                    <p className="text-foreground leading-relaxed">
+                      I'm passionate about creating elegant solutions to complex problems through clean, 
+                      efficient code and thoughtful user experiences.
+                    </p>
+                    
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li className="flex items-start gap-2">
+                        <span className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Systematic approach to problem-solving with focus on scalability</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></span>
+                        <span>Computer Science student at University of Waterloo</span>
+                      </li>
+                    </ul>
+                    
+                    <p className="text-sm text-muted-foreground">
+                      Currently exploring the intersection of AI/ML and web development, 
+                      building projects that make technology more accessible and impactful.
+                    </p>
                   </div>
                 </div>
                 
-                <div className="flex-1 space-y-4">
-                  <p className="text-foreground leading-relaxed">
-                    I'm passionate about creating elegant solutions to complex problems through clean, 
-                    efficient code and thoughtful user experiences.
-                  </p>
-                  
-                  <ul className="space-y-2 text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                      <span>Systematic approach to problem-solving with focus on scalability</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="w-1 h-1 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-                      <span>Computer Science student at University of Waterloo</span>
-                    </li>
-                  </ul>
-                  
-                  <p className="text-sm text-muted-foreground">
-                    Currently exploring the intersection of AI/ML and web development, 
-                    building projects that make technology more accessible and impactful.
-                  </p>
-                </div>
-              </div>
-              
-              {/* Quick Facts */}
-              <div className="border-t border-border pt-4">
-                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4" />
-                    <span>Waterloo, ON</span>
+                {/* Quick Facts */}
+                <div className="border-t border-border pt-4">
+                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <MapPin className="w-4 h-4" />
+                      <span>Waterloo, ON</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>Available for opportunities</span>
+                    </div>
+                    <Button variant="link" size="sm" className="p-0 h-auto text-primary">
+                      View Resume
+                    </Button>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4" />
-                    <span>Available for opportunities</span>
-                  </div>
-                  <Button variant="link" size="sm" className="p-0 h-auto text-primary">
-                    View Resume
-                  </Button>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+
+            {/* Waterloo Campus Image - positioned directly below About Me card */}
+            <div className="flex justify-center" style={{ marginTop: '10px' }}>
+              <img
+                src="/uwcampus.jpg"
+                alt="University of Waterloo Campus"
+                className="w-[48rem] h-auto object-contain rounded-lg"
+              />
+            </div>
+          </div>
 
           {/* Skills Card */}
           <Card className="bg-card shadow-lg border-0">
