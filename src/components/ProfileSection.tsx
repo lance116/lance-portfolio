@@ -106,7 +106,7 @@ export default function ProfileSection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Column */}
-          <div className="space-y-0">
+          <div className="flex flex-col h-full">
             {/* About Me Card */}
             <Card className="bg-card shadow-lg border-0 h-fit">
               <CardHeader>
@@ -163,20 +163,16 @@ export default function ProfileSection() {
               </CardContent>
             </Card>
 
-            {/* Waterloo Campus Image - positioned directly below About Me card */}
-            <div className="flex justify-center" style={{ marginTop: '10px' }}>
+            {/* Waterloo Campus Image - fills remaining space and aligns with skills section */}
+            <div className="flex-1 flex items-end justify-center mt-4">
               <img
                 src="/uwcampus.jpg"
                 alt="University of Waterloo Campus"
-                className="w-[48rem] h-auto object-contain rounded-lg"
+                className="w-full h-auto max-w-[48rem] object-contain rounded-lg"
               />
             </div>
 
-            {/* Arrow pointing to campus with text */}
-            <div className="flex justify-center items-center gap-2 mt-2">
-              <ArrowUp className="w-5 h-5 text-primary" />
-              <span className="text-lg font-medium text-foreground">My school!</span>
-            </div>
+
           </div>
 
           {/* Skills Card */}
