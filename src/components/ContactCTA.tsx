@@ -93,7 +93,7 @@ export default function ContactCTA({ className }: ContactCTAProps) {
     } else if (platform === 'LinkedIn') {
       window.open('https://www.linkedin.com/in/lance-yan/', '_blank');
     } else if (platform === 'Twitter') {
-      toast.info('Twitter profile coming soon!');
+      window.open('https://x.com/cnnguan', '_blank');
     }
   }, []);
 

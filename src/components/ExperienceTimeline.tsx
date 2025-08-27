@@ -28,7 +28,7 @@ const mockExperiences: ExperienceEntry[] = [
   {
     id: '1',
     title: 'Software Engineering Intern (Founding Team)',
-    company: 'Stealth Startup -- AI Legal Document Parsing Toronto, ON',
+    company: 'Stealth Startup — AI Legal Document Parsing',
     startDate: '2025-05',
     endDate: 'Present',
     logo: '/stealth.png',
@@ -183,7 +183,7 @@ function TimelineItem({ entry, index }: TimelineItemProps) {
           </div>
         </CardHeader>
 
-        <CardContent className="pt-0">
+        <CardContent className="pt-0 -mt-5">
           {/* All bullet points */}
           <ul className="space-y-2">
             {entry.impacts.map((impact, idx) => (

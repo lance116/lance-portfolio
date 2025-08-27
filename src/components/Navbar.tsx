@@ -64,7 +64,7 @@ export default function Navbar() {
     const socialLinks = {
       linkedin: 'https://linkedin.com/in/yourprofile',
       github: 'https://github.com/lance116', 
-      twitter: 'https://twitter.com/yourusername'
+      twitter: 'https://x.com/cnnguan'
     };
     
     const url = socialLinks[platform as keyof typeof socialLinks];
