@@ -159,8 +159,8 @@ export default function LoadingOverlay({ onReady, className }: LoadingOverlayPro
             opacity: 1;
           }
           50% {
-            transform: scale(1.02);
-            opacity: 0.9;
+            transform: scale(1.08);
+            opacity: 0.85;
           }
         }
       `}</style>
