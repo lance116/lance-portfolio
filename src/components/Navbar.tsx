@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, ChevronRight } from 'lucide-react';
+import { Menu, ChevronRight, Linkedin, Github, Twitter } from 'lucide-react';
 
 const navLinks = [
   { href: '#skills', label: 'Skills' },
@@ -60,6 +60,19 @@ export default function Navbar() {
     window.open('/resume.pdf', '_blank');
   };
 
+  const handleSocialClick = (platform: string) => {
+    const socialLinks = {
+      linkedin: 'https://linkedin.com/in/yourprofile',
+      github: 'https://github.com/yourusername', 
+      twitter: 'https://twitter.com/yourusername'
+    };
+    
+    const url = socialLinks[platform as keyof typeof socialLinks];
+    if (url) {
+      window.open(url, '_blank');
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -70,37 +83,74 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo/Wordmark */}
-          <div className="flex items-center space-x-4">
+          {/* Left side - Logo and Navigation */}
+          <div className="flex items-center space-x-8">
             <h1 className="font-heading font-bold text-xl text-foreground">
               Lance Yan
             </h1>
-            <div className="hidden md:block w-px h-6 bg-border" />
+            
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-6">
+              {navLinks.map((link) => (
+                <button
+                  key={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`relative text-sm font-medium transition-all duration-200 hover:text-primary hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm ${
+                    activeSection === link.href.substring(1)
+                      ? 'text-primary'
+                      : 'text-foreground'
+                  }`}
+                >
+                  {link.label}
+                  {activeSection === link.href.substring(1) && (
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                  )}
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className={`relative text-sm font-medium transition-all duration-200 hover:text-primary hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:rounded-sm ${
-                  activeSection === link.href.substring(1)
-                    ? 'text-primary'
-                    : 'text-foreground'
-                }`}
-              >
-                {link.label}
-                {activeSection === link.href.substring(1) && (
-                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-                )}
-              </button>
-            ))}
+          {/* Right side - Social Media and Resume */}
+          <div className="hidden md:flex items-center space-x-3">
+            {/* Social Media Buttons */}
+            <Button
+              onClick={() => handleSocialClick('linkedin')}
+              variant="outline"
+              size="sm"
+              className="px-3 py-2 rounded-full transition-all duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              title="LinkedIn"
+            >
+              <Linkedin className="h-4 w-4 mr-2" />
+              LinkedIn
+            </Button>
             
+            <Button
+              onClick={() => handleSocialClick('github')}
+              variant="outline"
+              size="sm"
+              className="px-3 py-2 rounded-full transition-all duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              title="GitHub"
+            >
+              <Github className="h-4 w-4 mr-2" />
+              GitHub
+            </Button>
+            
+            <Button
+              onClick={() => handleSocialClick('twitter')}
+              variant="outline"
+              size="sm"
+              className="px-3 py-2 rounded-full transition-all duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              title="Twitter"
+            >
+              <Twitter className="h-4 w-4 mr-2" />
+              Twitter
+            </Button>
+            
+            {/* Resume Button */}
             <Button
               onClick={handleResumeClick}
               size="sm"
-              className="ml-4 bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-4 py-2 rounded-full transition-all duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-4 py-2 rounded-full transition-all duration-200 hover:scale-105 focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               title="Open resume in new tab"
             >
               Resume
@@ -137,10 +187,43 @@ export default function Navbar() {
                     </button>
                   ))}
                   
-                  <div className="pt-4 border-t border-border">
+                  <div className="pt-4 border-t border-border space-y-3">
+                    {/* Social Media Buttons */}
+                    <div className="space-y-2">
+                      <Button
+                        onClick={() => handleSocialClick('linkedin')}
+                        variant="outline"
+                        className="w-full py-3 rounded-full justify-start"
+                        title="LinkedIn"
+                      >
+                        <Linkedin className="h-5 w-5 mr-3" />
+                        LinkedIn
+                      </Button>
+                      
+                      <Button
+                        onClick={() => handleSocialClick('github')}
+                        variant="outline"
+                        className="w-full py-3 rounded-full justify-start"
+                        title="GitHub"
+                      >
+                        <Github className="h-5 w-5 mr-3" />
+                        GitHub
+                      </Button>
+                      
+                      <Button
+                        onClick={() => handleSocialClick('twitter')}
+                        variant="outline"
+                        className="w-full py-3 rounded-full justify-start"
+                        title="Twitter"
+                      >
+                        <Twitter className="h-5 w-5 mr-3" />
+                        Twitter
+                      </Button>
+                    </div>
+                    
                     <Button
                       onClick={handleResumeClick}
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 rounded-lg"
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 rounded-full"
                     >
                       Resume
                     </Button>

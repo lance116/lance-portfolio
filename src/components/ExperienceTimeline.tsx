@@ -16,7 +16,7 @@ interface ExperienceEntry {
   logo?: string;
   impacts: string[];
   details?: string[];
-  type: 'full-time' | 'internship' | 'contract' | 'freelance';
+  type: 'full-time' | 'internship' | 'contract' | 'freelance' | 'founder';
 }
 
 interface TimelineItemProps {
@@ -37,7 +37,7 @@ const mockExperiences: ExperienceEntry[] = [
       'Designed and implemented a modular component library of 40+ reusable UI elements, reducing projected development time for new features by 60%.',
       'Built dynamic form validation workflows with Gemini API integration to provide instant AI feedback on document completion accuracy directly within the UI.'
     ],
-    type: 'full-time'
+    type: 'founder'
   },
   {
     id: '2',
@@ -107,6 +107,8 @@ function TimelineItem({ entry, index }: TimelineItemProps) {
         return 'bg-green-100 text-green-800';
       case 'freelance':
         return 'bg-purple-100 text-purple-800';
+      case 'founder':
+        return 'bg-red-100 text-red-800';
       default:
         return 'bg-gray-100 text-gray-800';
     }
@@ -175,7 +177,7 @@ function TimelineItem({ entry, index }: TimelineItemProps) {
                       variant="secondary" 
                       className={`text-xs capitalize ${getTypeColor(entry.type)}`}
                     >
-                      {entry.type}
+                      {entry.type === 'founder' ? 'Founder' : entry.type}
                     </Badge>
                   )}
                 </div>

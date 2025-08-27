@@ -54,22 +54,34 @@ export default function ContactCTA({ className }: ContactCTAProps) {
     setLastSubmit(now);
 
     try {
-      // Simulate form submission - in real app, this would be an API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // For demo purposes, randomly succeed or fail
-      if (Math.random() > 0.2) {
+      // Formspree endpoint for contact form
+      const response = await fetch('https://formspree.io/f/mzzabynn', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          subject: data.subject,
+          message: data.message,
+        }),
+      });
+
+      if (response.ok) {
         toast.success('Message sent successfully! I\'ll get back to you soon.');
         setIsSubmitted(true);
+        form.reset(); // Clear the form
       } else {
-        throw new Error('Network error');
+        throw new Error('Failed to send message');
       }
     } catch (error) {
+      console.error('Contact form error:', error);
       toast.error('Failed to send message. Please try again or contact me directly.');
     } finally {
       setIsSubmitting(false);
     }
-  }, [lastSubmit]);
+  }, [lastSubmit, form]);
 
   const handleDownloadResume = useCallback(() => {
     // In a real app, this would trigger a resume download

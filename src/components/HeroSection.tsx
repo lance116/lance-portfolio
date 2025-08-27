@@ -67,7 +67,7 @@ export default function HeroSection() {
                 className="text-lg sm:text-xl lg:text-2xl text-muted-foreground font-medium leading-relaxed"
                 variants={itemVariants}
               >
-                Full‑stack web development and AI engineering — Waterloo CS
+                Full‑stack web development and AI engineering — CS @ UWaterloo
               </motion.p>
             </div>
 
@@ -96,18 +96,19 @@ export default function HeroSection() {
 
           {/* Right Column - Visual Card */}
           <motion.div
-            className="flex justify-center lg:justify-end"
+            className="flex justify-center"
             variants={itemVariants}
           >
+            {/* Main Card */}
             <div className="bg-card rounded-2xl p-8 shadow-lg border border-border max-w-md w-full">
-              {/* Code Preview Placeholder */}
-              <div className="bg-muted rounded-lg p-6 mb-6 border border-border">
-                <div className="flex items-center gap-2 mb-4">
+              {/* Code Preview Placeholder - moved up */}
+              <div className="bg-muted rounded-lg p-4 mb-6 border border-border">
+                <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-primary rounded-full"></div>
                   <div className="w-3 h-3 bg-amber-400 rounded-full"></div>
                   <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
                 </div>
-                <div className="space-y-2 text-sm font-mono">
+                <div className="space-y-1 text-sm font-mono">
                   <div className="text-primary font-semibold">const</div>
                   <div className="text-primary font-semibold ml-4">developer = &#123;</div>
                   <div className="text-foreground ml-8">name: "Lance Yan",</div>

@@ -16,7 +16,7 @@ interface Project {
   keyMetric: string;
   metricValue: string;
   stack: string[];
-  category: string;
+  category: string | string[];
   thumbnail: string;
   demoUrl?: string;
   codeUrl?: string;
@@ -34,7 +34,7 @@ const mockProjects: Project[] = [
     keyMetric: 'Query Performance',
     metricValue: '75% faster',
     stack: ['React', 'Next.js', 'TypeScript', 'Python', 'PostgreSQL'],
-    category: 'Full Stack',
+    category: ['Full Stack', 'AI/ML'],
     thumbnail: '/aiperiodtracker.png',
     demoUrl: '#demo',
     codeUrl: '#code',
@@ -49,11 +49,11 @@ const mockProjects: Project[] = [
   },
   {
     id: '2',
-    title: 'ML Model Deployment Platform',
-    problem: 'Data scientists needed a streamlined way to deploy and monitor ML models at scale',
+    title: 'Chess Neural Network',
+    problem: 'I created a chess neural network from scratch using Tensorflow and Python',
     keyMetric: 'Deployment Time',
     metricValue: '90% reduction',
-    stack: ['PyTorch', 'Docker', 'Kubernetes', 'FastAPI', 'React'],
+    stack: ['Python', 'TensorFlow', 'NumPy'],
     category: 'AI/ML',
     thumbnail: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop',
     demoUrl: '#demo',
@@ -69,13 +69,13 @@ const mockProjects: Project[] = [
   },
   {
     id: '3',
-    title: 'E-commerce Performance Optimization',
-    problem: 'Online store suffered from slow load times and poor conversion rates',
+    title: 'This website!',
+    problem: 'Featuring handmade elements, transitions and designs, built with lots of coffee',
     keyMetric: 'Page Load Speed',
     metricValue: '60% faster',
     stack: ['Next.js', 'Vercel', 'Shopify', 'GraphQL', 'Tailwind'],
     category: 'Full Stack',
-    thumbnail: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop',
+    thumbnail: '/portfolioss.png',
     demoUrl: '#demo',
     codeUrl: '#code',
     fullDescription: 'Rebuilt an e-commerce platform from the ground up, focusing on performance optimization and user experience improvements.',
@@ -104,9 +104,13 @@ export default function ProjectsSection() {
     return () => clearTimeout(timer);
   }, []);
 
-  const filteredProjects = projects.filter(project => 
-    selectedCategory === 'All' || project.category === selectedCategory
-  );
+  const filteredProjects = projects.filter(project => {
+    if (selectedCategory === 'All') return true;
+    if (Array.isArray(project.category)) {
+      return project.category.includes(selectedCategory);
+    }
+    return project.category === selectedCategory;
+  });
 
   const handleCategoryChange = useCallback((category: string) => {
     setSelectedCategory(category);
@@ -298,17 +302,19 @@ export default function ProjectsSection() {
                           className="flex-1"
                         >
                           <Github className="w-4 h-4 mr-1" />
-                          View Repo
+                          View Repository
                         </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => project.demoUrl && window.open(project.demoUrl, '_blank')}
-                          className="flex-1"
-                        >
-                          <Component className="w-4 h-4 mr-1" />
-                          Demo
-                        </Button>
+                        {project.id !== '2' && project.id !== '3' && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => project.demoUrl && window.open(project.demoUrl, '_blank')}
+                            className="flex-1"
+                          >
+                            <Component className="w-4 h-4 mr-1" />
+                            Demo
+                          </Button>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
@@ -419,23 +425,25 @@ export default function ProjectsSection() {
 
                 {/* Action Buttons */}
                 <div className="flex gap-4 pt-4 border-t border-border">
-                  <Button
-                    asChild
-                    className="flex-1"
-                  >
-                    <a href={selectedProject.demoUrl} target="_blank" rel="noopener noreferrer">
-                      <Component className="w-4 h-4 mr-2" />
-                      View Demo
-                    </a>
-                  </Button>
+                  {selectedProject.id !== '2' && selectedProject.id !== '3' && (
+                    <Button
+                      asChild
+                      className="flex-1"
+                    >
+                      <a href={selectedProject.demoUrl} target="_blank" rel="noopener noreferrer">
+                        <Component className="w-4 h-4 mr-2" />
+                        View Demo
+                      </a>
+                    </Button>
+                  )}
                   <Button
                     variant="outline"
                     asChild
-                    className="flex-1"
+                    className={selectedProject.id === '2' || selectedProject.id === '3' ? "w-full" : "flex-1"}
                   >
                     <a href={selectedProject.codeUrl} target="_blank" rel="noopener noreferrer">
                       <Github className="w-4 h-4 mr-2" />
-                      View Repo
+                      View Repository
                     </a>
                   </Button>
                 </div>

@@ -13,8 +13,8 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: "Java", proficiency: 95 },
-  { name: "Python", proficiency: 90 },
+  { name: "Python", proficiency: 95 },
+  { name: "Java", proficiency: 90 },
   { name: "JavaScript", proficiency: 88 },
   { name: "TypeScript", proficiency: 85 },
   { name: "React", proficiency: 92 },
