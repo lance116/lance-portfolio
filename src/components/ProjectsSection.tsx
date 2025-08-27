@@ -70,7 +70,7 @@ const mockProjects: Project[] = [
     id: '3',
     title: 'This website!',
     problem: 'Featuring handmade elements, transitions and designs, built with lots of coffee',
-    keyMetric: 'Features a sleek, sleek design',
+    keyMetric: 'Features a sleek, beautiful design',
     metricValue: '',
     stack: ['React', 'Next.js', 'Tailwind', 'TypeScript', 'Vercel'],
     category: 'Full Stack',
