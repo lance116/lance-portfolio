@@ -31,6 +31,7 @@ const skills: Skill[] = [
 
 export default function ProfileSection() {
   const [animatedSkills, setAnimatedSkills] = useState<number[]>(new Array(skills.length).fill(0));
+  const [percentageCounters, setPercentageCounters] = useState<number[]>(new Array(skills.length).fill(0));
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const animationStarted = useRef(false);
@@ -55,30 +56,44 @@ export default function ProfileSection() {
 
   useEffect(() => {
     if (isVisible) {
+      // Reset to 0 first
+      setAnimatedSkills(new Array(skills.length).fill(0));
+      setPercentageCounters(new Array(skills.length).fill(0));
+      
+      // Use a simple, smooth approach with CSS transitions
       skills.forEach((skill, index) => {
+        const delay = index * 150; // Reduced delay for 25% faster loading
+        
         setTimeout(() => {
-          const startTime = Date.now();
-          const duration = 1000;
+          setAnimatedSkills(prev => {
+            const newValues = [...prev];
+            newValues[index] = skill.proficiency;
+            return newValues;
+          });
           
-          const animate = () => {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+          // Animate percentage counter from 0 to final value
+          const counterDuration = 800; // Fast counter animation
+          const startTime = performance.now();
+          
+          const animateCounter = (currentTime: number) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / counterDuration, 1);
             const easeOutQuart = 1 - Math.pow(1 - progress, 4);
             const currentValue = Math.round(skill.proficiency * easeOutQuart);
             
-            setAnimatedSkills(prev => {
+            setPercentageCounters(prev => {
               const newValues = [...prev];
               newValues[index] = currentValue;
               return newValues;
             });
             
             if (progress < 1) {
-              requestAnimationFrame(animate);
+              requestAnimationFrame(animateCounter);
             }
           };
           
-          requestAnimationFrame(animate);
-        }, index * 100);
+          requestAnimationFrame(animateCounter);
+        }, delay);
       });
     }
   }, [isVisible]);
@@ -176,17 +191,18 @@ export default function ProfileSection() {
                         {skill.name}
                       </span>
                       <span className="text-sm text-muted-foreground">
-                        {animatedSkills[index]}%
+                        {percentageCounters[index]}%
                       </span>
                     </div>
-                    <Progress
-                      value={animatedSkills[index]}
-                      className="h-2"
-                      aria-valuenow={animatedSkills[index]}
-                      aria-valuemin={0}
-                      aria-valuemax={100}
-                      aria-label={`${skill.name} proficiency: ${animatedSkills[index]}%`}
-                    />
+                    <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
+                      <div 
+                        className="bg-primary h-2 rounded-full transition-all duration-750 ease-out"
+                        style={{ 
+                          width: `${animatedSkills[index]}%`,
+                          transitionDelay: `${index * 37}ms`
+                        }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
