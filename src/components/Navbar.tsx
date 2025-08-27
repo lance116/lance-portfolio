@@ -62,7 +62,7 @@ export default function Navbar() {
 
   const handleSocialClick = (platform: string) => {
     const socialLinks = {
-      linkedin: 'https://linkedin.com/in/yourprofile',
+      linkedin: 'https://www.linkedin.com/in/lance-yan/',
       github: 'https://github.com/lance116', 
       twitter: 'https://x.com/cnnguan'
     };
