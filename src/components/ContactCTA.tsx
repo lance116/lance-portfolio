@@ -99,10 +99,10 @@ export default function ContactCTA({ className }: ContactCTAProps) {
 
   if (isSubmitted) {
     return (
-      <section className={`w-full py-16 px-6 ${className}`}>
+      <section className={`w-full py-3 px-6 ${className}`}>
         <div className="max-w-4xl mx-auto">
-          <div className="bg-card rounded-2xl shadow-lg border border-border p-8">
-            <div className="text-center space-y-6">
+          <div className="bg-card rounded-2xl shadow-lg border border-border p-6">
+            <div className="text-center space-y-4">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full">
                 <CircleCheckBig className="w-8 h-8 text-primary" />
               </div>
@@ -141,7 +141,7 @@ export default function ContactCTA({ className }: ContactCTAProps) {
   }
 
   return (
-    <section className={`w-full pt-6 pb-16 px-6 ${className}`}>
+    <section className={`w-full pt-0 pb-16 px-6 ${className}`}>
       <div className="max-w-4xl mx-auto">
         <div className="bg-card rounded-2xl shadow-lg border border-border overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-0">
