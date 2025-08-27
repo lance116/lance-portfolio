@@ -27,7 +27,7 @@ interface TimelineItemProps {
 const mockExperiences: ExperienceEntry[] = [
   {
     id: '1',
-    title: 'Software Engineering Intern (Founding Team)',
+    title: 'Software Engineering Intern',
     company: 'Stealth Startup — AI Legal Document Parsing',
     startDate: '2025-05',
     endDate: 'Present',
@@ -130,7 +130,7 @@ function TimelineItem({ entry, index }: TimelineItemProps) {
       </div>
 
       <Card 
-        className="ml-6 transition-all duration-200 hover:shadow-md hover:-translate-y-1 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+        className="ml-6 transition-all duration-200 hover:shadow-md hover:-translate-y-1 hover:border-red-500 hover:border-2 focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
         tabIndex={0}
         role="article"
         aria-label={`${entry.title} at ${entry.company}`}
