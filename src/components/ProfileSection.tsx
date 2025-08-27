@@ -140,9 +140,6 @@ export default function ProfileSection() {
                       <Calendar className="w-4 h-4" />
                       <span>Available for opportunities</span>
                     </div>
-                    <Button variant="link" size="sm" className="p-0 h-auto text-primary">
-                      View Resume
-                    </Button>
                   </div>
                 </div>
               </CardContent>

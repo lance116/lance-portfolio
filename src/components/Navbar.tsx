@@ -56,14 +56,14 @@ export default function Navbar() {
   };
 
   const handleResumeClick = () => {
-    // Open resume in new tab - assuming resume is in public folder
-    window.open('/resume.pdf', '_blank');
+    // Open resume in new tab
+    window.open('/LanceYanResume.pdf', '_blank');
   };
 
   const handleSocialClick = (platform: string) => {
     const socialLinks = {
       linkedin: 'https://linkedin.com/in/yourprofile',
-      github: 'https://github.com/yourusername', 
+      github: 'https://github.com/lance116', 
       twitter: 'https://twitter.com/yourusername'
     };
     

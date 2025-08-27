@@ -27,16 +27,16 @@ interface TimelineItemProps {
 const mockExperiences: ExperienceEntry[] = [
   {
     id: '1',
-    title: 'Founding Software Engineer',
-    company: 'Stealth Startup',
+    title: 'Software Engineering Intern (Founding Team)',
+    company: 'Stealth Startup -- AI Legal Document Parsing Toronto, ON',
     startDate: '2025-05',
     endDate: 'Present',
     logo: '/stealth.png',
     impacts: [
       'Led the end-to-end development of the platform\'s frontend for an AI-powered legal document verification tool, using React, TypeScript, and Next.js to deliver a responsive, scalable interface.',
       'Designed and implemented a modular component library of 40+ reusable UI elements, reducing projected development time for new features by 60%.',
-      'Built dynamic form validation workflows with Gemini API integration to provide instant AI feedback on document completion accuracy directly within the UI.'
-    ],
+      'Built dynamic form validation workflows with OpenAI API integration to provide instant AI feedback on document completion accuracy directly within the UI.'
+    ],  
     type: 'founder'
   },
   {
@@ -46,14 +46,11 @@ const mockExperiences: ExperienceEntry[] = [
     startDate: '2025-01',
     endDate: '2025-04',
     logo: '/consultingimage.png',
-    impacts: [
-      'Built responsive web applications serving 10k+ daily users',
-      'Improved accessibility compliance to WCAG 2.1 AA standards'
-    ],
+    impacts: [],
     details: [
-      'Developed reusable React component library',
-      'Integrated third-party APIs and payment systems',
-      'Reduced bundle size by 30% through code optimization'
+      'Built and launched the consulting firm\'s public website with Next.js, TypeScript, and Tailwind, optimizing SEO and accessibility to boost client engagement and drive 1,000+ new monthly visitors',
+      'Automated deployment pipelines with Vercel CI/CD, cutting release cycles to hours while maintaining 99.9% uptime',
+      'Integrated Google Analytics and CRM workflows, giving consultants real-time insights into lead sources and boosting sales-qualified leads by 30%'
     ],
     type: 'internship'
   },

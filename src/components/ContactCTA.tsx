@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Send, Linkedin, Check, CircleCheckBig, IdCard } from 'lucide-react';
+import { Send, Linkedin, Check, CircleCheckBig, IdCard, Mail, Twitter } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
 
@@ -84,13 +84,17 @@ export default function ContactCTA({ className }: ContactCTAProps) {
   }, [lastSubmit, form]);
 
   const handleDownloadResume = useCallback(() => {
-    // In a real app, this would trigger a resume download
-    toast.success('Resume download started');
+    window.open('/LanceYanResume.pdf', '_blank');
   }, []);
 
   const handleSocialClick = useCallback((platform: string) => {
-    // In a real app, these would navigate to actual social profiles
-    toast.info(`Opening ${platform} profile`);
+    if (platform === 'Email') {
+      window.open('mailto:lance.yan@uwaterloo.ca', '_blank');
+    } else if (platform === 'LinkedIn') {
+      window.open('https://www.linkedin.com/in/lance-yan/', '_blank');
+    } else if (platform === 'Twitter') {
+      toast.info('Twitter profile coming soon!');
+    }
   }, []);
 
   if (isSubmitted) {
@@ -166,7 +170,7 @@ export default function ContactCTA({ className }: ContactCTAProps) {
                       onClick={() => handleSocialClick('Email')}
                       aria-label="Send email"
                     >
-                      <Send className="w-4 h-4" />
+                      <Mail className="w-4 h-4" />
                     </Button>
                     <Button
                       size="sm"
@@ -176,6 +180,15 @@ export default function ContactCTA({ className }: ContactCTAProps) {
                       aria-label="LinkedIn profile"
                     >
                       <Linkedin className="w-4 h-4" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      className="w-10 h-10 p-0 hover:border-primary hover:text-primary hover:bg-primary/5 transition-all duration-200"
+                      onClick={() => handleSocialClick('Twitter')}
+                      aria-label="Twitter profile"
+                    >
+                      <Twitter className="w-4 h-4" />
                     </Button>
                   </div>
                 </div>
@@ -351,7 +364,7 @@ export default function ContactCTA({ className }: ContactCTAProps) {
         {/* Footer */}
         <div className="text-center mt-12 pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground">
-            © 2024 Lance Yan. Built with Next.js and passion.
+            © 2025 Lance Yan. Built with Next.js, passion, and lots of ☕!
           </p>
         </div>
       </div>

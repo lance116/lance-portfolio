@@ -4,9 +4,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Skeleton } from '@/components/ui/skeleton';
-import { Grid3x2, BadgeX, Component, Frame, ChartColumnBig, Github } from 'lucide-react';
+import { BadgeX, Component, Github, Grid3x2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface Project {
@@ -31,13 +30,13 @@ const mockProjects: Project[] = [
     id: '1',
     title: 'AI-Powered Period Tracker',
     problem: 'I created a custom period tracker app for my girlfriend which features an AI chat buddy',
-    keyMetric: 'Query Performance',
-    metricValue: '75% faster',
-    stack: ['React', 'Next.js', 'TypeScript', 'Python', 'PostgreSQL'],
+    keyMetric: 'With a personalized period analytics AI built-in',
+    metricValue: '',
+    stack: ['React', 'Supabase', 'Gemini API', 'TypeScript', 'Tailwind', 'Framer Motion'],
     category: ['Full Stack', 'AI/ML'],
     thumbnail: '/aiperiodtracker.png',
-    demoUrl: '#demo',
-    codeUrl: '#code',
+    demoUrl: 'https://perica-ten.vercel.app',
+    codeUrl: 'https://github.com/lance116/period-tracker',
     fullDescription: 'Built a comprehensive analytics platform that processes millions of data points in real-time, providing actionable insights through intuitive visualizations.',
     approach: 'Implemented a microservices architecture with Redis caching, optimized SQL queries, and created a responsive dashboard using modern React patterns.',
     results: [
@@ -49,15 +48,15 @@ const mockProjects: Project[] = [
   },
   {
     id: '2',
-    title: 'Chess Neural Network',
+    title: 'Neural Network — Chess',
     problem: 'I created a chess neural network from scratch using Tensorflow and Python',
-    keyMetric: 'Deployment Time',
-    metricValue: '90% reduction',
+    keyMetric: 'Trained on 80M+ board positions',
+    metricValue: '',
     stack: ['Python', 'TensorFlow', 'NumPy'],
     category: 'AI/ML',
     thumbnail: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=600&fit=crop',
     demoUrl: '#demo',
-    codeUrl: '#code',
+    codeUrl: 'https://github.com/lance116/Chess-Neural-Network',
     fullDescription: 'Created an end-to-end ML operations platform that automates model deployment, monitoring, and scaling across cloud infrastructure.',
     approach: 'Built containerized microservices with auto-scaling capabilities, integrated monitoring dashboards, and implemented CI/CD pipelines for ML workflows.',
     results: [
@@ -71,13 +70,13 @@ const mockProjects: Project[] = [
     id: '3',
     title: 'This website!',
     problem: 'Featuring handmade elements, transitions and designs, built with lots of coffee',
-    keyMetric: 'Page Load Speed',
-    metricValue: '60% faster',
-    stack: ['Next.js', 'Vercel', 'Shopify', 'GraphQL', 'Tailwind'],
+    keyMetric: 'Features a sleek, sleek design',
+    metricValue: '',
+    stack: ['React', 'Next.js', 'Tailwind', 'TypeScript', 'Vercel'],
     category: 'Full Stack',
-    thumbnail: '/portfolioss.png',
+    thumbnail: '/portSS.png',
     demoUrl: '#demo',
-    codeUrl: '#code',
+    codeUrl: 'https://github.com/lance116/lance-portfolio',
     fullDescription: 'Rebuilt an e-commerce platform from the ground up, focusing on performance optimization and user experience improvements.',
     approach: 'Implemented server-side rendering, image optimization, lazy loading, and modern caching strategies to deliver lightning-fast page loads.',
     results: [
@@ -94,7 +93,6 @@ const categories = ['All', 'Full Stack', 'AI/ML'];
 export default function ProjectsSection() {
   const [projects] = useState<Project[]>(mockProjects);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
 
@@ -114,14 +112,6 @@ export default function ProjectsSection() {
 
   const handleCategoryChange = useCallback((category: string) => {
     setSelectedCategory(category);
-  }, []);
-
-  const handleViewCase = useCallback((project: Project) => {
-    setSelectedProject(project);
-  }, []);
-
-  const handleCloseModal = useCallback(() => {
-    setSelectedProject(null);
   }, []);
 
   useEffect(() => {
@@ -275,8 +265,8 @@ export default function ProjectsSection() {
                         variant="secondary" 
                         className="bg-primary/10 text-primary border-primary/20 mb-4"
                       >
-                        <ChartColumnBig className="w-3 h-3 mr-1" />
-                        {project.keyMetric}: {project.metricValue}
+                        <Grid3x2 className="w-3 h-3 mr-1" />
+                        {project.keyMetric}
                       </Badge>
 
                       {/* Stack Badges */}
@@ -298,21 +288,25 @@ export default function ProjectsSection() {
                         <Button
                           variant="default"
                           size="sm"
-                          onClick={() => handleViewCase(project)}
+                          asChild
                           className="flex-1"
                         >
-                          <Github className="w-4 h-4 mr-1" />
-                          View Repository
+                          <a href={project.codeUrl} target="_blank" rel="noopener noreferrer">
+                            <Github className="w-4 h-4 mr-1" />
+                            View Repository
+                          </a>
                         </Button>
-                        {project.id !== '2' && project.id !== '3' && (
+                        {project.id === '1' && (
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => project.demoUrl && window.open(project.demoUrl, '_blank')}
+                            asChild
                             className="flex-1"
                           >
-                            <Component className="w-4 h-4 mr-1" />
-                            Demo
+                            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+                              <Component className="w-4 h-4 mr-1" />
+                              View Demo
+                            </a>
                           </Button>
                         )}
                       </div>
@@ -337,134 +331,6 @@ export default function ProjectsSection() {
           </Button>
         </div>
       </div>
-
-      {/* Project Detail Modal */}
-      <Dialog open={!!selectedProject} onOpenChange={handleCloseModal}>
-        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
-          {selectedProject && (
-            <>
-              <DialogHeader>
-                <DialogTitle className="text-2xl font-heading">
-                  {selectedProject.title}
-                </DialogTitle>
-                <DialogDescription className="text-muted-foreground">
-                  {selectedProject.problem}
-                </DialogDescription>
-              </DialogHeader>
-
-              <div className="space-y-8">
-                {/* Project Overview */}
-                <div>
-                  <img
-                    src={selectedProject.thumbnail}
-                    alt={selectedProject.title}
-                    className="w-full h-64 object-cover rounded-lg mb-6"
-                  />
-                  
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="text-lg font-semibold mb-3">Key Metric</h4>
-                      <Badge className="bg-primary/10 text-primary border-primary/20 text-base px-3 py-1">
-                        <ChartColumnBig className="w-4 h-4 mr-2" />
-                        {selectedProject.keyMetric}: {selectedProject.metricValue}
-                      </Badge>
-                    </div>
-                    
-                    <div>
-                      <h4 className="text-lg font-semibold mb-3">Tech Stack</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {selectedProject.stack.map((tech) => (
-                          <Badge key={tech} variant="outline">
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Problem → Approach → Results */}
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="text-lg font-semibold mb-3 text-primary">Problem</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedProject.fullDescription}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold mb-3 text-primary">Approach</h4>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {selectedProject.approach}
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="text-lg font-semibold mb-3 text-primary">Results</h4>
-                    <ul className="space-y-2">
-                      {selectedProject.results.map((result, index) => (
-                        <li key={index} className="flex items-start gap-2 text-muted-foreground">
-                          <ChartColumnBig className="w-4 h-4 mt-0.5 text-primary flex-shrink-0" />
-                          {result}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Architecture Placeholder */}
-                <div className="bg-muted/30 border-2 border-dashed border-border rounded-lg p-8 text-center">
-                  <Grid3x2 className="w-12 h-12 text-muted-foreground mx-auto mb-3" />
-                  <p className="text-muted-foreground">
-                    Architecture Diagram
-                  </p>
-                  <small className="text-muted-foreground/70">
-                    System design and data flow visualization
-                  </small>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-4 pt-4 border-t border-border">
-                  {selectedProject.id !== '2' && selectedProject.id !== '3' && (
-                    <Button
-                      asChild
-                      className="flex-1"
-                    >
-                      <a href={selectedProject.demoUrl} target="_blank" rel="noopener noreferrer">
-                        <Component className="w-4 h-4 mr-2" />
-                        View Demo
-                      </a>
-                    </Button>
-                  )}
-                  <Button
-                    variant="outline"
-                    asChild
-                    className={selectedProject.id === '2' || selectedProject.id === '3' ? "w-full" : "flex-1"}
-                  >
-                    <a href={selectedProject.codeUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="w-4 h-4 mr-2" />
-                      View Repository
-                    </a>
-                  </Button>
-                </div>
-
-                {/* CTA for Recruiters */}
-                <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 text-center">
-                  <h5 className="text-lg font-semibold text-foreground mb-2">
-                    Interested in collaborating?
-                  </h5>
-                  <p className="text-muted-foreground mb-4">
-                    I'd love to discuss how I can bring this level of impact to your team and projects.
-                  </p>
-                  <Button asChild>
-                    <a href="#contact">Contact Me</a>
-                  </Button>
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
     </section>
   );
 }
