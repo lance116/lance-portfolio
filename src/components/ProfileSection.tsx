@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 
-import { MapPin, Calendar } from "lucide-react";
+import { MapPin, Calendar, ArrowUp } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -155,6 +155,12 @@ export default function ProfileSection() {
                 alt="University of Waterloo Campus"
                 className="w-[48rem] h-auto object-contain rounded-lg"
               />
+            </div>
+
+            {/* Arrow pointing to campus with text */}
+            <div className="flex justify-center items-center gap-2 mt-2">
+              <ArrowUp className="w-5 h-5 text-primary" />
+              <span className="text-lg font-medium text-foreground">My school!</span>
             </div>
           </div>
 
