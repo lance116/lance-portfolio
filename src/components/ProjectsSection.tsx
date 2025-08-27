@@ -236,7 +236,7 @@ export default function ProjectsSection() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={visibleCards.has(project.id) ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.05 }}
                   className="group"
                 >
                   <Card className="overflow-hidden bg-card border-border shadow-sm hover:shadow-lg transition-all duration-300">
@@ -245,7 +245,7 @@ export default function ProjectsSection() {
                       <img
                         src={project.thumbnail}
                         alt={project.title}
-                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                         loading="lazy"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
