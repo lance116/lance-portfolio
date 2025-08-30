@@ -2,4 +2,6 @@
 
 2. more projects
 
-3. all sections transition into place, regardless of position or time
+3. all sections transition into place, regardless of position or time (top)
+
+4. more personal info
