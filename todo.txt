@@ -5,3 +5,5 @@
 3. all sections transition into place, regardless of position or time (top)
 
 4. more personal info
+
+5. make the proficiency skill shit better

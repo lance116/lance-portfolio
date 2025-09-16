@@ -37,7 +37,7 @@ const mockExperiences: ExperienceEntry[] = [
       'Designed and implemented a modular component library of 40+ reusable UI elements, reducing projected development time for new features by 60%.',
       'Built dynamic form validation workflows with OpenAI API integration to provide instant AI feedback on document completion accuracy directly within the UI.'
     ],  
-    type: 'founder'
+    type: 'internship'
   },
   {
     id: '2',
