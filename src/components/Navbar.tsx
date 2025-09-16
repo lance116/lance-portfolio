@@ -57,7 +57,7 @@ export default function Navbar() {
 
   const handleResumeClick = () => {
     // Open resume in new tab
-    window.open('/LanceYanResume.pdf', '_blank');
+    window.open('/LYResume.pdf', '_blank');
   };
 
   const handleSocialClick = (platform: string) => {

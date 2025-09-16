@@ -84,7 +84,7 @@ export default function ContactCTA({ className }: ContactCTAProps) {
   }, [lastSubmit, form]);
 
   const handleDownloadResume = useCallback(() => {
-    window.open('/LanceYanResume.pdf', '_blank');
+    window.open('/LYResume.pdf', '_blank');
   }, []);
 
   const handleSocialClick = useCallback((platform: string) => {
