@@ -24,7 +24,7 @@ interface TimelineItemProps {
   index: number;
 }
 
-const mockExperiences: ExperienceEntry[] = [
+const experienceEntries: ExperienceEntry[] = [
   {
     id: '1',
     title: 'Software Engineering Intern',
@@ -228,7 +228,7 @@ export default function ExperienceTimeline({
     const loadInitialData = async () => {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 800));
-      setExperiences(mockExperiences);
+      setExperiences(experienceEntries);
       setIsLoading(false);
     };
 

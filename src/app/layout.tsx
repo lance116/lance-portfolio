@@ -3,6 +3,7 @@ import "./globals.css";
 // import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Script from "next/script";
+import { Analytics } from '@vercel/analytics/react';
 
 export const metadata: Metadata = {
   title: "Lance's Portfolio",
@@ -34,9 +35,10 @@ export default function RootLayout({
           data-include-search-params="true"
           data-only-in-iframe="true"
           data-debug="true"
-          data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
+          data-custom-data='{"appName": "Lance Portfolio", "version": "0.1.0", "environment": "production"}'
         />
         {children}
+        <Analytics />
         {/* <VisualEditsMessenger /> */}
       </body>
     </html>

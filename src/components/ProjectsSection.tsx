@@ -25,7 +25,7 @@ interface Project {
   architecture?: string;
 }
 
-const mockProjects: Project[] = [
+const projectsData: Project[] = [
   {
     id: '1',
     title: 'AI-Powered Period Tracker',
@@ -91,7 +91,7 @@ const mockProjects: Project[] = [
 const categories = ['All', 'Full Stack', 'AI/ML'];
 
 export default function ProjectsSection() {
-  const [projects] = useState<Project[]>(mockProjects);
+  const [projects] = useState<Project[]>(projectsData);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [isLoading, setIsLoading] = useState(true);
   const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
