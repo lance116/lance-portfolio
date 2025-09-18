@@ -13,78 +13,46 @@ interface Project {
   title: string;
   problem: string;
   keyMetric: string;
-  metricValue: string;
   stack: string[];
   category: string | string[];
   thumbnail: string;
   demoUrl?: string;
   codeUrl?: string;
-  fullDescription: string;
-  approach: string;
-  results: string[];
-  architecture?: string;
 }
 
 const projectsData: Project[] = [
   {
     id: '1',
     title: 'AI-Powered Period Tracker',
-    problem: 'I created a custom period tracker app for my girlfriend which features an AI chat buddy',
-    keyMetric: 'With a personalized period analytics AI built-in',
-    metricValue: '',
+    problem: 'A privacy-friendly period tracker with an AI assistant for insights and reminders.',
+    keyMetric: 'AI assistant for cycle insights and reminders',
     stack: ['React', 'Supabase', 'Gemini API', 'TypeScript', 'Tailwind', 'Framer Motion'],
     category: ['Full Stack', 'AI/ML'],
     thumbnail: '/aiperiodtracker.png',
     demoUrl: 'https://perica-ten.vercel.app',
     codeUrl: 'https://github.com/lance116/period-tracker',
-    fullDescription: 'Built a comprehensive analytics platform that processes millions of data points in real-time, providing actionable insights through intuitive visualizations.',
-    approach: 'Implemented a microservices architecture with Redis caching, optimized SQL queries, and created a responsive dashboard using modern React patterns.',
-    results: [
-      '75% improvement in query performance',
-      '40% increase in user engagement',
-      '60% reduction in support tickets',
-      'Successfully deployed to 500+ enterprise clients'
-    ]
   },
   {
     id: '2',
     title: 'Neural Network — Chess',
-    problem: 'I created a chess neural network from scratch using Tensorflow and Python',
+    problem: 'A from-scratch chess position evaluator trained on board states.',
     keyMetric: 'Trained on 80M+ board positions',
-    metricValue: '',
     stack: ['Python', 'TensorFlow', 'NumPy'],
     category: 'AI/ML',
     thumbnail: '/chessscreens.png',
-    demoUrl: '#demo',
+    
     codeUrl: 'https://github.com/lance116/Chess-Neural-Network',
-    fullDescription: 'Created an end-to-end ML operations platform that automates model deployment, monitoring, and scaling across cloud infrastructure.',
-    approach: 'Built containerized microservices with auto-scaling capabilities, integrated monitoring dashboards, and implemented CI/CD pipelines for ML workflows.',
-    results: [
-      '90% reduction in deployment time',
-      '99.9% uptime achieved',
-      '50+ models deployed successfully',
-      '$200K annual infrastructure cost savings'
-    ]
   },
   {
     id: '3',
     title: 'This website!',
-    problem: 'Featuring handmade elements, transitions and designs, built with lots of coffee',
-    keyMetric: 'Features a sleek, beautiful design',
-    metricValue: '',
+    problem: 'A performant personal portfolio showcasing projects, experience, and contact.',
+    keyMetric: 'Fast, responsive, accessible portfolio',
     stack: ['React', 'Next.js', 'Tailwind', 'TypeScript', 'Vercel'],
     category: 'Full Stack',
     thumbnail: '/portSS.png',
-    demoUrl: '#demo',
+    demoUrl: '/',
     codeUrl: 'https://github.com/lance116/lance-portfolio',
-    fullDescription: 'Rebuilt an e-commerce platform from the ground up, focusing on performance optimization and user experience improvements.',
-    approach: 'Implemented server-side rendering, image optimization, lazy loading, and modern caching strategies to deliver lightning-fast page loads.',
-    results: [
-      '60% improvement in page load speed',
-      '35% increase in conversion rate',
-      '45% reduction in bounce rate',
-      '$1.2M additional revenue generated'
-    ]
   }
 ];
 

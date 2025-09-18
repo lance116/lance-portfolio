@@ -362,9 +362,9 @@ export default function ContactCTA({ className }: ContactCTAProps) {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-12 pt-8 border-t border-border">
+        <div className="mt-12 pt-8 border-t border-border text-left">
           <p className="text-sm text-muted-foreground">
-            © 2025 Lance Yan. Built with Next.js, passion, and lots of ☕!
+            © 2025 Lance Yan
           </p>
         </div>
       </div>
