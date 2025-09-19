@@ -101,7 +101,7 @@ export default function HeroSection() {
             {/* Main Card */}
             <div className="bg-card rounded-2xl p-8 shadow-lg border border-border max-w-md w-full">
               {/* Code Preview Placeholder - moved up */}
-              <div className="bg-muted rounded-lg p-4 mb-6 border border-border">
+              <div className="bg-muted rounded-lg p-6 border border-border">
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-primary rounded-full"></div>
                   <div className="w-3 h-3 bg-amber-400 rounded-full"></div>
@@ -117,21 +117,6 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              {/* Tech Stack Badges */}
-              <div className="flex flex-wrap gap-2">
-                <div className="flex items-center gap-1 bg-secondary px-3 py-1.5 rounded-full text-sm font-medium text-secondary-foreground border border-border">
-                  <Layers className="w-4 h-4 text-primary" />
-                  React
-                </div>
-                <div className="flex items-center gap-1 bg-secondary px-3 py-1.5 rounded-full text-sm font-medium text-secondary-foreground border border-border">
-                  <Globe className="w-4 h-4 text-primary" />
-                  Next.js
-                </div>
-                <div className="flex items-center gap-1 bg-secondary px-3 py-1.5 rounded-full text-sm font-medium text-secondary-foreground border border-border">
-                  <Database className="w-4 h-4 text-primary" />
-                  PostgreSQL
-                </div>
-              </div>
             </div>
           </motion.div>
         </motion.div>
