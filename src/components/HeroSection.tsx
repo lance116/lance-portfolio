@@ -66,7 +66,7 @@ export default function HeroSection() {
                 className="text-lg sm:text-xl lg:text-2xl text-muted-foreground font-medium leading-relaxed"
                 variants={itemVariants}
               >
-                Full‑stack web development and AI engineering — CS @ UWaterloo
+                Full‑stack web development and AI engineering   CS @ UWaterloo
               </motion.p>
             </div>
 
