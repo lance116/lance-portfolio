@@ -149,7 +149,7 @@ export default function ContactCTA({ className }: ContactCTAProps) {
             <div className="p-8 lg:p-12 space-y-8">
               <div className="space-y-4">
                 <h2 className="text-3xl lg:text-4xl font-heading font-bold text-black leading-tight">
-                  Let's build something <span className="text-primary">great</span> — get in touch today!
+                  Let's build something <span className="text-primary">great</span>. Get in touch today!
                 </h2>
                 <p className="text-muted-foreground text-lg">
                   Ready to discuss opportunities or collaborate on your next project? 
