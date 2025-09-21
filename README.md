@@ -1,49 +1,45 @@
-# Lance Yan's Portfolio
+# lance yan's portfolio
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A modern, responsive portfolio website built with Next.js, React, and Tailwind CSS.
+my personal portfolio website where i showcase my projects and experience. built with next.js and react because i wanted something fast and modern.
 
-## 🚀 Features
+## what it does
 
-- **Responsive Design** - Works perfectly on all devices
-- **Modern UI/UX** - Clean, professional interface with smooth animations
-- **Performance Optimized** - Fast loading with Next.js optimizations
-- **SEO Friendly** - Proper metadata and semantic HTML
-- **Contact Form** - Integrated contact form with Formspree backend
+this is basically my online resume but better. it shows off my coding projects, work experience, and skills in a clean, responsive way. visitors can check out what i've built, see my background, and even contact me through the form.
 
-## 🛠️ Tech Stack
+## tech stack
 
-- **Frontend**: React, Next.js, TypeScript
-- **Styling**: Tailwind CSS, Framer Motion
-- **Backend**: Formspree (contact form)
-- **Deployment**: Vercel
+- **frontend**: react, next.js, typescript
+- **styling**: tailwind css, framer motion for animations
+- **contact form**: formspree
+- **deployment**: vercel
 
-## 📱 Sections
+## what's included
 
-- Hero Section with animated tech stack
-- Professional experience timeline
-- Project showcase with GitHub links
-- Skills and proficiency charts
-- Contact form with social media links
+- hero section with some animated tech stuff
+- timeline of my work experience
+- project gallery with github links
+- skills section
+- contact form and social links
 
-## 🚀 Getting Started
+## getting started
 
 ```bash
-# Install dependencies
-pnpm install
+# install dependencies
+npm install
 
-# Run development server
-pnpm dev
+# run development server
+npm run dev
 
-# Build for production
-pnpm build
+# build for production
+npm run build
 ```
 
-## 📄 License
+## license
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+mit license - feel free to use this as inspiration for your own portfolio
 
-## 👨‍💻 Author
+## author
 
-**Lance Yan** - [LinkedIn](https://www.linkedin.com/in/lance-yan/) | [GitHub](https://github.com/lance116)
+**lance yan** - [linkedin](https://www.linkedin.com/in/lance-yan/) | [github](https://github.com/lance116)
