@@ -2,109 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
 
-import { MapPin, Calendar, ArrowUp } from "lucide-react";
-
-interface Skill {
-  name: string;
-  proficiency: number;
-}
-
-const skills: Skill[] = [
-  { name: "Python", proficiency: 95 },
-  { name: "Java", proficiency: 90 },
-  { name: "JavaScript", proficiency: 88 },
-  { name: "TypeScript", proficiency: 85 },
-  { name: "React", proficiency: 92 },
-  { name: "Next.js", proficiency: 87 },
-  { name: "Tailwind CSS", proficiency: 90 },
-  { name: "HTML", proficiency: 95 },
-      { name: "CSS", proficiency: 88 },
-    { name: "PostgreSQL", proficiency: 85 },
-    { name: "PyTorch", proficiency: 75 },
-  { name: "TensorFlow", proficiency: 80 },
-  { name: "NumPy", proficiency: 85 },
-  { name: "Matplotlib", proficiency: 82 }
-];
+import { MapPin, Calendar } from "lucide-react";
 
 export default function ProfileSection() {
-  const [animatedSkills, setAnimatedSkills] = useState<number[]>(new Array(skills.length).fill(0));
-  const [percentageCounters, setPercentageCounters] = useState<number[]>(new Array(skills.length).fill(0));
-  const skillRefs = useRef<(HTMLDivElement | null)[]>(new Array(skills.length).fill(null));
-  const individualSkillAnimations = useRef<Set<number>>(new Set());
-
-
-
-  // Individual skill intersection observers
-  useEffect(() => {
-    const skillObservers: IntersectionObserver[] = [];
-    
-    skillRefs.current.forEach((skillRef, index) => {
-      if (skillRef) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting && !individualSkillAnimations.current.has(index)) {
-              // Trigger animation for this specific skill
-              individualSkillAnimations.current.add(index);
-              
-              // Animate both progress bar and percentage counter simultaneously
-              setAnimatedSkills(prev => {
-                const newValues = [...prev];
-                newValues[index] = skills[index].proficiency;
-                return newValues;
-              });
-              
-              // Start percentage counter animation immediately
-              const skill = skills[index];
-              const counterDuration = 800;
-              const startTime = performance.now();
-              
-              const animateCounter = (currentTime: number) => {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / counterDuration, 1);
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                const currentValue = Math.round(skill.proficiency * easeOutQuart);
-                
-                setPercentageCounters(prev => {
-                  const newValues = [...prev];
-                  newValues[index] = currentValue;
-                  return newValues;
-                });
-                
-                if (progress < 1) {
-                  requestAnimationFrame(animateCounter);
-                }
-              };
-              
-              requestAnimationFrame(animateCounter);
-            }
-          },
-          { 
-            threshold: 0.1, // Trigger when 10% of the skill is visible
-            rootMargin: '0px 0px -50px 0px' // Trigger when bottom of screen reaches top of skill
-          }
-        );
-        
-        observer.observe(skillRef);
-        skillObservers.push(observer);
-      }
-    });
-    
-    return () => {
-      skillObservers.forEach(observer => observer.disconnect());
-    };
-  }, []);
-
-
-
-
-
+  
   return (
     <section className="w-full py-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           {/* Left Column */}
           <div className="flex flex-col h-full">
             {/* About Me Card */}
@@ -163,53 +69,15 @@ export default function ProfileSection() {
               </CardContent>
             </Card>
 
-            {/* Waterloo Campus Image - fills remaining space and aligns with skills section */}
-            <div className="flex-1 flex items-end justify-center mt-4">
-              <img
-                src="/uwcampus.jpg"
-                alt="University of Waterloo Campus"
-                className="w-full h-auto max-w-[48rem] object-contain rounded-lg"
-              />
-            </div>
-
-
           </div>
-
-          {/* Skills Card */}
-          <Card className="bg-card shadow-lg border-0">
-            <CardHeader>
-              <CardTitle className="text-2xl font-heading text-foreground">Skills</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {skills.map((skill, index) => (
-                  <div 
-                    key={skill.name} 
-                    ref={(el) => { skillRefs.current[index] = el; }}
-                    className="space-y-2"
-                  >
-                    <div className="flex justify-between items-center">
-                      <span className="text-sm font-medium text-foreground">
-                        {skill.name}
-                      </span>
-                      <span className="text-sm text-muted-foreground">
-                        {percentageCounters[index]}%
-                      </span>
-                    </div>
-                    <div className="w-full bg-secondary rounded-full h-2 overflow-hidden">
-                      <div 
-                        className="bg-primary h-2 rounded-full transition-all duration-750 ease-out"
-                        style={{ 
-                          width: `${animatedSkills[index]}%`,
-                          transitionDelay: `${index * 37}ms`
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+					{/* Right Column - Waterloo Campus Image */}
+					<div className="flex items-center justify-center">
+						<img
+							src="/uwcampus.jpg"
+							alt="University of Waterloo Campus"
+							className="w-full h-auto max-w-[48rem] object-contain rounded-lg"
+						/>
+					</div>
         </div>
       </div>
     </section>
